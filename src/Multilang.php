@@ -20,6 +20,9 @@ class Multilang
         $explode = explode('.',$file);
         if(file_exists($this->directory.'/'.$this->language.'/'.$explode[0].'.json'))
         {
+            return __DIR__.'/'.$this->directory.'/'.$this->language;
+
+
             $lang_file = file_get_contents(__DIR__.'/'.$this->directory.'/'.$this->language, $explode[0].'.json');
 
             $a = json_decode($lang_file,true);
