@@ -1,0 +1,11 @@
+{
+    "name": "momentumplanet/multilang",
+    "description": "change language",
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "Momentumplanet\\Multilang\\": "src/"
+        }
+    },
+    "require": {}
+}
