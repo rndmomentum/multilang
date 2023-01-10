@@ -18,11 +18,22 @@ class Multilang
     public function lang($file)
     {
         $explode = explode('.',$file);
-        if(file_exists($this->directory.'/'.$this->language.'/'.$explode[0]))
+        if(file_exists($this->directory.'/'.$this->language.'/'.$explode[0].'.json'))
         {
-            return 'file exists';
+            $lang_file = file_get_contents($this->directory.'/'.$this->language, $explode[0].'.json');
+
+            $a = json_decode($lang_file,true);
+            return $a[$explode[1]];
         }
 
-        return 'file not exists';
+        if(file_exists($this->directory.'/'.Config::LANG.'/'.$explode[0].'.json'))
+        {
+            $lang_file = file_get_contents($this->directory.'/'.$this->language, $explode[0].'.json');
+
+            $a = json_decode($lang_file,true);
+            return $a[$explode[1]];
+        }
+
+        return $file;
     }
 }
