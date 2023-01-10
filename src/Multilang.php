@@ -20,22 +20,19 @@ class Multilang
         $explode = explode('.',$file);
         if(file_exists($this->directory.'/'.$this->language.'/'.$explode[0].'.json'))
         {
-            return $_SERVER['DOCUMENT_ROOT'].'/'.$this->directory.'/'.$this->language;
-
-
             $lang_file = file_get_contents($_SERVER['DOCUMENT_ROOT'].'/'.$this->directory.'/'.$this->language, $explode[0].'.json');
 
             $a = json_decode($lang_file,true);
             return $a[$explode[1]];
         }
 
-        // if(file_exists($this->directory.'/'.Config::LANG.'/'.$explode[0].'.json'))
-        // {
-        //     $lang_file = file_get_contents($this->directory.'/'.$this->language, $explode[0].'.json');
+        if(file_exists($this->directory.'/'.Config::LANG.'/'.$explode[0].'.json'))
+        {
+            $lang_file = file_get_contents($_SERVER['DOCUMENT_ROOT'].$this->directory.'/'.$this->language, $explode[0].'.json');
 
-        //     $a = json_decode($lang_file,true);
-        //     return $a[$explode[1]];
-        // }
+            $a = json_decode($lang_file,true);
+            return $a[$explode[1]];
+        }
 
         return $file;
     }
